@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exchange</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="pos-center">
+      <button class="button login" onclick="showPopup()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-box-arrow-in-right"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
+          />
+        </svg>
+        Login
+      </button>
+
+      <button class="button logout" onclick="logout()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-box-arrow-in-left"
+          viewBox="0 0 16 16"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"
+          />
+          <path
+            fill-rule="evenodd"
+            d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"
+          />
+        </svg>
+        Logout
+      </button>
+    </div>
+    <div id="popup" class="blur-screen">
+      <div class="back-drop"></div>
+      <div class="popup-container">
+        <h1>Taras Konoshenko OI-12</h1>
+        <h2>Login</h2>
+        <form id="loginForm">
+          <!-- <label for="email">Email:</label> -->
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email:"
+            required
+          />
+          <!-- <label for="password">Password:</label> -->
+          <input
+            type="password"
+            id="password"
+            placeholder="Password:"
+            name="password"
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+    <div style="display: flex;justify-content: center;align-items: center;width: 100%">
+      <h1 style="color: white">Фінансовий помічник для підприємців у криптовалюті</h1>
+    </div>
+    <div class="container">
+
+      <div class="currence-container">
+        <div class="flex">
+          <div class="currency-item" onclick="saveCurrency('BTC')">
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Bitcoin</span>
+                <img src="img/btc.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small">1 btc</span>
+            </div>
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-down-up"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Privat 24</span>
+                <img src="img/bank-24.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small" id="btcRate"></span>
+              <span class="font-small"></span>
+            </div>
+          </div>
+          <div class="currency-item" onclick="saveCurrency('BCH')">
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Bitcoin Cash (BCH)</span>
+                <img src="img/btc.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small">1 etc</span>
+            </div>
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-down-up"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Privat 24</span>
+                <img src="img/bank-24.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small" id="bchRate"></span>
+              <span class="font-small"></span>
+            </div>
+          </div>
+
+          <div class="currency-item" onclick="saveCurrency('DOGE')">
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Dogecoin DOGE</span>
+                <img src="img/btc.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small">1 doge</span>
+            </div>
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-down-up"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Privat 24</span>
+                <img src="img/bank-24.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small" id="dogeRate"></span>
+              <span class="font-small"></span>
+            </div>
+          </div>
+          <div class="currency-item" onclick="saveCurrency('LTC')">
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Litecoin</span>
+                <img src="img/btc.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small">1 LTC</span>
+            </div>
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-down-up"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Privat 24</span>
+                <img src="img/bank-24.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small" id="ltcRate"></span>
+              <span class="font-small"></span>
+            </div>
+          </div>
+          <div class="currency-item" onclick="saveCurrency('XRP')">
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Ripple (XRP) </span>
+                <img src="img/btc.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small">1 XRP</span>
+            </div>
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-down-up"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Privat 24</span>
+                <img src="img/bank-24.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small" id="xrpRate"></span>
+              <span class="font-small"></span>
+            </div>
+          </div>
+          <div class="currency-item" onclick="saveCurrency('DASH')">
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Dash (DASH)</span>
+                <img src="img/btc.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small">1 DASH</span>
+            </div>
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-down-up"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Privat 24</span>
+                <img src="img/bank-24.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small" id="dashRate"></span>
+              <span class="font-small"></span>
+            </div>
+          </div>
+          <div class="currency-item" onclick="saveCurrency('TRX')">
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Tron (TRX)</span>
+                <img src="img/btc.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small">1 TRX</span>
+            </div>
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-arrow-down-up"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"
+                />
+              </svg>
+            </div>
+            <div>
+              <div class="flex-item">
+                <span class="font-big">Privat 24</span>
+                <img src="img/bank-24.svg" alt="Bitcoin" class="icon" />
+              </div>
+              <span class="font-small" id="trxRate"></span>
+            </div>
+          </div>
+          <div style="flex-direction: column;gap:0" class="currency-item op">
+            <h1 style="color: white;margin-bottom: 0">Графік для допоги аналізу ринку криптовалюти</h1>
+            <div class="tradingview-widget-container">
+              <div class="tradingview-widget-container__widget"></div>
+              <div class="tradingview-widget-copyright">
+                <a
+                  href="https://ru.tradingview.com/"
+                  rel="noopener nofollow"
+                  target="_blank"
+                  ><span class="blue-text"
+                    >Слідкуйтк за ринками на TradingView</span
+                  ></a
+                >
+              </div>
+              <script
+                type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js"
+                async
+              >
+                  {
+                  "symbols": [
+                    [
+                      "BINANCE:BTCUSD|12M"
+                    ],
+                    [
+                      "BINANCE:LTCUSD|12M"
+                    ],
+                    [
+                      "BINANCE:DOGEUSD|12M"
+                    ],
+                    [
+                      "BINANCE:ETHUSD|12M"
+                    ],
+                    [
+                      "BINANCE:XRPUSD|12M"
+                    ],
+                    [
+                      "BINANCE:DASHUSD|12M"
+                    ],
+                    [
+                      "BINANCE:TRXUSD|12M"
+                    ],
+                    [
+                      "BINANCE:BCHUSD|12M"
+                    ],
+                    [
+                      "BINANCE:ETCUSD|12M"
+                    ]
+                  ],
+                  "chartOnly": false,
+                  "width": 1000,
+                  "height": 500,
+                  "locale": "ru",
+                  "colorTheme": "light",
+                  "autosize": false,
+                  "showVolume": false,
+                  "showMA": false,
+                  "hideDateRanges": false,
+                  "hideMarketStatus": false,
+                  "hideSymbolLogo": false,
+                  "scalePosition": "right",
+                  "scaleMode": "Normal",
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                  "fontSize": "10",
+                  "noTimeScale": false,
+                  "valuesTracking": "1",
+                  "changeMode": "price-and-percent",
+                  "chartType": "area",
+                  "maLineColor": "#2962FF",
+                  "maLineWidth": 1,
+                  "maLength": 9,
+                  "lineWidth": 2,
+                  "lineType": 0,
+                  "dateRanges": [
+                    "1d|1",
+                    "1m|30",
+                    "3m|60",
+                    "12m|1D",
+                    "60m|1W",
+                    "all|1M"
+                  ]
+                }
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rate-container">
+        <div class="user-info">
+          User email:
+          <span id="userEmail"></span>
+          <center>
+            <h1>Top Crypto</h1>
+          </center>
+        </div>
+        <div class="item" onclick="updateChartData(this)">
+          <img
+            src="img/btc-svgrepo-com.svg"
+            alt="Bitcoin Icon"
+            class="currency-icon"
+          />
+          <div class="text">
+            <p>Bitcoin (BTC)</p>
+          </div>
+
+          <span class="number" id="btcRate1"></span>
+        </div>
+        <div class="item" onclick="updateChartData(this)">
+          <img src="img/ltc.svg" alt="Litecoin Icon" class="currency-icon" />
+          <div class="text">
+            <p>Litecoin (LTC)</p>
+          </div>
+
+          <span class="number" id="ltcRate1"></span>
+        </div>
+        <div class="item" onclick="updateChartData(this)">
+          <img src="img/doge.svg" alt="Dogecoin Icon" class="currency-icon" />
+          <div class="text">
+            <p>Dogecoin (DOGE)</p>
+          </div>
+          <span class="number" id="dogeRate1"></span>
+        </div>
+        <!-- Add more currency items below -->
+        <div class="item" onclick="updateChartData(this)">
+          <img
+            src="img/ethereum.svg"
+            alt="Ethereum Icon"
+            class="currency-icon"
+          />
+          <div class="text">
+            <p>Ethereum (ETH)</p>
+          </div>
+          <div class="number">29,567.89 UAH / 800,43 USD</div>
+        </div>
+        <div class="item" onclick="updateChartData(this)">
+          <img src="img/ripple.svg" alt="Ripple Icon" class="currency-icon" />
+          <div class="text">
+            <p>Ripple (XRP)</p>
+          </div>
+
+          <span class="number" id="xrpRate1"></span>
+        </div>
+        <div class="item" onclick="updateChartData(this)">
+          <img
+            src="img/ethereum.svg"
+            alt="Ethereum Icon"
+            class="currency-icon"
+          />
+          <div class="text">
+            <p>Dash (DASH)</p>
+          </div>
+          <span class="number" id="dashRate1"></span>
+          <span class="number" id="dashRate1"></span>
+        </div>
+        <div class="item" onclick="updateChartData(this)">
+          <img src="img/tron.svg" alt="Ripple Icon" class="currency-icon" />
+          <div class="text">
+            <p>Tron (TRX)</p>
+          </div>
+          <span class="number" id="trxRate1"></span>
+        </div>
+        <div class="item" onclick="updateChartData(this)">
+          <img src="img/btc-cash.svg" alt="Tron Icon" class="currency-icon" />
+          <div class="text">
+            <p>Bitcoin Cash (BCH)</p>
+          </div>
+          <span class="number" id="bchRate1"></span>
+        </div>
+        <div class="item" onclick="updateChartData(this)">
+          <img src="img/etc.svg" alt="Ripple Icon" class="currency-icon" />
+          <div class="text">
+            <p>Ethereum Classic (ETC)</p>
+          </div>
+          <div class="number">642.79 UAH / 17,40 USD</div>
+        </div>
+        <!-- Add more currency items here -->
+      </div>
+    </div>
+    <!-- TradingView Widget BEGIN -->
+
+    <!-- TradingView Widget END -->
+
+    <script src="script.js"></script>
+  </body>
+</html>

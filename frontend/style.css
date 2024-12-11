@@ -1,0 +1,289 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
+
+body {
+  margin: 0 0;
+  padding: 50px 0;
+  height: 100%;
+  font-family: "Rubik", sans-serif;
+  background-color: #27374d;
+}
+
+.tradingview-widget-container {
+  max-width: 836px;
+}
+
+.container {
+  display: flex;
+  gap: 10px;
+  height: 100%;
+  margin-top: 20px;
+}
+
+.currence-container {
+  flex-grow: 3;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.rate-container {
+  flex-grow: 2;
+  flex-basis: 33%;
+  flex-shrink: 0;
+  background-color: #212a3e;
+  border-radius: 5px;
+}
+
+.flex {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.currency-item {
+  display: flex;
+  background-color: #374259;
+  color: hsl(0, 0%, 100%);
+  padding: 8px;
+  /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
+  border-radius: 10px;
+  gap: 25px;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.5s ease;
+  border: 1px solid transparent;
+}
+
+.currency-item:hover {
+  border: 1px solid white;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.currency-item > div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 100%;
+}
+
+.font-small {
+  font-size: 13px;
+  color: #ee7a7a;
+  text-transform: uppercase;
+}
+
+.font-big {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.icon {
+  display: none;
+  max-width: 35px;
+}
+
+.flex-item {
+  display: flex;
+  align-items: center;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center !important;
+  align-self: center;
+}
+
+/* RIGHT SIDE CONTENT */
+
+.rate-container {
+  padding: 5px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #394867;
+  color: white;
+  font-weight: bold;
+}
+
+.user-info {
+  color: white;
+}
+
+.number {
+  font-weight: normal;
+}
+
+.item img {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.item .text {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.item .number {
+  font-size: 20px;
+}
+
+.currency-icon {
+  max-width: 50px;
+}
+
+
+.back-drop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.blur-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  z-index: 1001;
+  min-width: 350px;
+  background-color: #27374d;
+  padding: 100px;
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border: 4px solid white;
+}
+
+#popup.visible {
+  display: flex;
+}
+
+.popup-container h2 {
+  text-align: center;
+}
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+#loginForm input {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #394867;
+  color: white;
+}
+
+::placeholder {
+  color: white;
+}
+
+#loginForm button {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  background-color: aquamarine;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#loginForm button:hover {
+  background-color: rgba(127, 255, 212, 0.747);
+}
+
+.item {
+  transition: all 0.5s ease;
+  border: 1px solid transparent;
+}
+
+.item:hover {
+  border: 1px solid white;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.tradingview-widget-container {
+  margin: auto;
+}
+
+.tradingview-widget-container iframe {
+  border-radius: 25px;
+  margin-top: 50px;
+}
+
+.tradingview-widget-copyright,
+.label-viu2QKQw {
+  display: none;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button.login {
+  background-color: #3f5689;
+  color: #fff;
+  border: none;
+}
+
+.button.login:hover {
+  background-color: #45a049;
+}
+
+.button.logout {
+  background-color: #212a3e;
+  color: #fff;
+  border: none;
+}
+
+.button.logout:hover {
+  background-color: #d32f2f;
+}
+
+.button svg {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.pos-center {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}

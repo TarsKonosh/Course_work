@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exchange</title>
+    <link rel="stylesheet" href="currency-styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Exchange</h1>
+
+      <div class="info">
+        <p>Info about Bitcoin:</p>
+        <p>Crypto is a decentralized digital currency</p>
+      </div>
+
+      <div class="exchange-container">
+        <div class="bitcoin-form">
+          <label for="bitcoin" id="btc-label">Bitcoin:</label>
+          <input
+            type="text"
+            class="currency-input"
+            id="bitcoinInput"
+            placeholder="0"
+            maxlength="10"
+            pattern="[0-9]*"
+          />
+        </div>
+        <div class="dropdown">
+          <label for="currency">Currency:</label>
+          <select
+            id="currency"
+            name="currency"
+            onchange="updateConversionRate()"
+          >
+            <option value="usd">USD</option>
+            <option value="uah">UAH</option>
+          </select>
+        </div>
+        <div class="privat24-form">
+          <label for="privat24">Privat 24:</label>
+          <input
+            type="text"
+            class="currency-input"
+            id="privat24Input"
+            name="privat24"
+            placeholder="0 UAH"
+            readonly
+          />
+        </div>
+      </div>
+
+      <form id="paymentForm">
+        <h2>Personal Info</h2>
+        <input
+          type="text"
+          name="First Name"
+          placeholder="First Name"
+          required
+        />
+        <input type="text" name="Last Name" placeholder="Last Name" required />
+        <input
+          type="email"
+          name="Email"
+          placeholder="Email"
+          required
+          id="email"
+        />
+        <input type="tel" name="Phone" placeholder="Phone Number" />
+        <input
+          type="text"
+          name="Privat 24 Card Number"
+          placeholder="Privat 24 Card Number"
+          required
+        />
+
+        <button type="submit" class="btn-pay">Pay</button>
+      </form>
+    </div>
+
+    <div id="waitingInfo" class="waiting-info" style="display: none">
+      <div id="submittedInfo" class="submitted-info"></div>
+      <div class="submitted-info">
+        <div style="word-break: break-all">
+          <h3>Send crypto to that address</h3>
+
+          <b>Address:</b>
+          0xfF8F8ab56ad7b3099442550771bA5C2357C68552
+        </div>
+        <p><span id="amount"></span></p>
+        <button type="submit" class="btn-pay" onclick="sendPayment()">
+          Send
+        </button>
+      </div>
+    </div>
+
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <p><b>Заявка № </b> 1773620</p>
+        <p><b> Статус: </b> Оплата закінчена</p>
+        <p id="popupMessage"></p>
+        <p>Кошти прийдуть від <i>15хв</i> до <i>3 годин</i></p>
+      </div>
+    </div>
+
+    <script src="currency-script.js"></script>
+  </body>
+</html>

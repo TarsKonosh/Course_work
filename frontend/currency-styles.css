@@ -1,0 +1,231 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #27374d;
+  font-family: Arial, sans-serif;
+  gap: 25px;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  background-color: #27374d;
+  padding: 20px;
+  color: white;
+  border-radius: 5px;
+  border: 2px solid white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-top: 0;
+  color: white;
+}
+
+.info {
+  font-size: 18px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+form {
+  margin-top: 20px;
+}
+
+form input {
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+form h2 {
+  margin-bottom: 10px;
+  color: white;
+}
+
+.bitcoin-form {
+  display: flex;
+  align-items: center;
+}
+
+.bitcoin-form label {
+  margin-right: 10px;
+}
+
+.bitcoin-form input[type="text"]:focus {
+  outline: none;
+}
+
+.exchange-container {
+  display: flex;
+  gap: 10px;
+}
+
+.exchange-container > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.currenct-input {
+  border: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-pay {
+  padding: 15px;
+  width: 100%;
+  border: none;
+  background-color: #7a90bc;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+
+.btn-pay:hover {
+  border: 1px solid black;
+}
+
+.submitted-info {
+  margin-top: 20px;
+  text-align: left;
+  font-size: 16px;
+  background-color: white;
+  width: 300px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.submitted-info p {
+  margin-bottom: 10px;
+}
+
+.waiting-info {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #666;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+}
+
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #394867;
+  border-radius: 8px;
+  color: white;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: 400px;
+}
+
+.popup-content b {
+  color: black;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  color: #999;
+}
+
+.close:hover {
+  color: #333;
+}
+
+#popupMessage {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#paymentForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#paymentForm input {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #394867;
+  color: white;
+}
+
+::placeholder {
+  color: white;
+}
+
+#paymentForm button {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  font-size: 20px;
+  background-color: aquamarine;
+  border-radius: 10px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#paymentForm button:hover {
+  background-color: rgba(127, 255, 212, 0.747);
+}
+
+#bitcoinInput,
+#privat24Input {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #394867;
+  color: white;
+}
+
+.exchange-container {
+  display: flex;
+}
+
+#currency {
+  display: flex;
+  height: 45.5px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  background-color: #394867;
+}
+
+#currency:hover,
+input:hover {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+#submittedInfo,
+.submitted-info {
+  background-color: #394867;
+  color: white;
+}
